@@ -19,6 +19,11 @@ gulp.task('watch', () => {
     watch('./app/assets/styles/**/*.css', gulp.series('cssInject', () => {
         console.log('CSS successfully injected!!');
     }));
+
+    watch('./app/assets/scripts/**/*.js', gulp.series('scripts', 'scriptsRefresh', () => {
+        console.log('Javascript successfully compiled!!');
+    }));
+
 });
 
 gulp.task('cssInject', gulp.series('styles', () => {
@@ -26,3 +31,8 @@ gulp.task('cssInject', gulp.series('styles', () => {
     return gulp.src('./app/temp/styles/styles.css')
     .pipe(browserSync.stream());
 }));
+
+gulp.task('scriptsRefresh', () => {
+    console.log('Reloading scripts...');
+    browserSync.reload();
+});

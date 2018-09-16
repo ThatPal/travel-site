@@ -20,7 +20,7 @@ gulp.task('watch', () => {
         console.log('===] CSS successfully injected!! [===');
     }));
 
-    watch('./app/assets/scripts/**/*.js', gulp.series('modernizr', 'scripts', 'scriptsRefresh'));
+    watch('./app/assets/scripts/**/*.js', gulp.series('scripts', 'scriptsRefresh'));
 
 });
 

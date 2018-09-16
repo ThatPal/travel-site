@@ -1,7 +1,7 @@
 const gulp = require('gulp'),
     webpack = require('webpack');
 
-gulp.task('scripts', callback => {
+gulp.task('scripts', gulp.series('modernizr', callback => {
     console.log('===] Compiling JS with Webpack... [===');
     webpack(require('../../webpack.config.js'), (err, stats) => {
         if(err) {
@@ -14,4 +14,4 @@ gulp.task('scripts', callback => {
         console.log('===] ------------- [===');
         callback();
     });
-});
+}));

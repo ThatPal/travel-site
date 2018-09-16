@@ -8,11 +8,13 @@ const gulp = require('gulp'),
     hexrgba = require('postcss-hexrgba');
 
 gulp.task('styles', () => {
-    console.log('Compiling CSS...');
+    console.log('===] Compiling CSS... [===');
     return gulp.src('./app/assets/styles/styles.css')
         .pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
         .on('error', function(errorInfo) {
+            console.log('===] CSS error [===');
             console.log(errorInfo.toString());
+            console.log('===] --------- [===');
             this.emit('end');
         })
         .pipe(gulp.dest('./app/temp/styles'));
